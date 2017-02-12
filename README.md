@@ -2,11 +2,15 @@
 
 # LeapMotionNodeJS
 
-
+Soruces:
+https://developer.leapmotion.com/documentation/javascript/devguide/Sample_Tutorial.html#id47
+https://cylonjs.com
+https://cylonjs.com/documentation/platforms/arduino/
+http://gort.io
 
 ## Usage
 
-
+node leap-world-server.js
 
 ## Developing
 

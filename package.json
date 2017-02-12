@@ -1,7 +1,7 @@
 {
   "name": "LeapMotionNodeJS",
   "version": "0.1.0",
-  "description": "LeapMotionNodeJS",
+  "description": "Arduino and Leapmotion controller",
   "main": "leap-world-server.js",
   "repository" :
   { "type" : "git"
@@ -18,8 +18,8 @@
   					"leapjs":"https://github.com/leapmotion/leapjs"},
   "keywords": [
     "node.js",
-    "eclipse",
-    "nodeclipse"
+    "leapmotion",
+    "arduino"
   ],
   "author": "",
   "license": "MIT",
