@@ -28,18 +28,23 @@ Cylon.robot({
 			driver : "led",
 			pin : 13,
 			connection : "arduino"
+		},
+		servo : {
+			driver : "servo",
+			pin : 3,
+			limits : {
+				bottom : 20,
+				top : 160
+			}
 		}
 	},
 	work : function(my) {
-		console.log("work");
-
-		//				every((1).second(), function() {
-		//					console.log("work");
-		//					my.led.toggle();
-		//				});
-
+		//						every((1).second(), function() {
+		//							console.log("work");
+		//							my.led.toggle();
+		//						});
 		my.leapmotion.on("frame", function(frame) {
-//			console.log(frame.toString());
+			//			console.log(frame.toString());
 			if (frame.hands.length === 2) {
 				console.log("two hands");
 				my.led.turnOn();
@@ -48,8 +53,23 @@ Cylon.robot({
 				my.led.turnOff();
 			}
 		});
-	//		my.leapmotion.on("hand", function(hand) {
-	//			console.log(hand.toString());
-	//		});
+		//		my.leapmotion.on("hand", function(hand) {
+		//			console.log(hand.toString());
+		//		});
+		var angle = 0,
+			increment = 20;
+
+		every((1).seconds(), function() {
+			angle += increment;
+
+			my.servo.angle(angle);
+
+			console.log("Current Angle: " + (my.servo.currentAngle()));
+
+			if ((angle === 0) || (angle === 180)) {
+				increment = -increment;
+			}
+		});
+
 	}
 }).start();
