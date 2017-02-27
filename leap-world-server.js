@@ -43,6 +43,10 @@ Cylon.robot({
 		//							console.log("work");
 		//							my.led.toggle();
 		//						});
+		
+		var angle = 0,
+		increment = 20;
+
 		my.leapmotion.on("frame", function(frame) {
 			//			console.log(frame.toString());
 			if (frame.hands.length === 2) {
@@ -51,25 +55,37 @@ Cylon.robot({
 			} else {
 				console.log("one hand");
 				my.led.turnOff();
+
+				angle += increment;
+
+				my.servo.angle(angle);
+
+				console.log("Current Angle: " + (my.servo.currentAngle()));
+
+				if ((angle === 0) || (angle === 180)) {
+					increment = -increment;
+				}
 			}
 		});
 		//		my.leapmotion.on("hand", function(hand) {
 		//			console.log(hand.toString());
 		//		});
-		var angle = 0,
-			increment = 20;
-
-		every((1).seconds(), function() {
-			angle += increment;
-
-			my.servo.angle(angle);
-
-			console.log("Current Angle: " + (my.servo.currentAngle()));
-
-			if ((angle === 0) || (angle === 180)) {
-				increment = -increment;
-			}
-		});
+//		var angle = 0,
+//			increment = 20;
+//
+//		every((1).seconds(), function() {
+//			angle += increment;
+//
+//			my.servo.angle(angle);
+//
+//			console.log("Current Angle: " + (my.servo.currentAngle()));
+//
+//			if ((angle === 0) || (angle === 180)) {
+//				increment = -increment;
+//			}
+//		});
 
 	}
 }).start();
+
+Cylon.api('http');
